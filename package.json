@@ -1,12 +1,13 @@
 {
 	"name": "@sach1/hydrangea",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "build/src/index.js",
 	"author": "sach1",
 	"license": "MIT",
 	"private": false,
 	"files": [
-		"build/**/*"
+		"build/**/*",
+		"src/**/*"
 	],
 	"scripts": {
 		"start": "node .",
