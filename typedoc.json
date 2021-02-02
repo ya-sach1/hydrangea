@@ -1,4 +1,4 @@
 {
-  "entryPoints": ["src"],
-  "out": "documentation"
+	"entryPoints": ["src"],
+	"out": "documentation"
 }
