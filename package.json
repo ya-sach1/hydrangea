@@ -1,14 +1,11 @@
 {
 	"name": "@sach1/hydrangea",
-	"version": "1.0.1",
-	"main": "build/src/index.js",
+	"version": "1.0.2",
+	"main": "build/index.js",
 	"author": "sach1",
 	"license": "MIT",
 	"private": false,
-	"files": [
-		"build/**/*",
-		"src/**/*"
-	],
+	"types": "build/index.d.ts",
 	"scripts": {
 		"start": "node .",
 		"prestart": "yarn && tsc",
