@@ -1,0 +1,10 @@
+node_modules
+.github
+.vscode
+documentation
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierrc.yaml
+typedoc.json
+src

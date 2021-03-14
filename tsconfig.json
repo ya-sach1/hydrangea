@@ -15,6 +15,7 @@
 		"sourceMap": false,
 		"inlineSourceMap": true,
 		"incremental": true,
+		"declaration": true,
 		"lib": ["ESNext", "ESNext.Array", "ESNext.AsyncIterable", "ESNext.Intl", "DOM"]
 	},
 	"include": ["src/**/*"],

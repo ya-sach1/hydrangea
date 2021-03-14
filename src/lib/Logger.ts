@@ -1,51 +1,35 @@
 import { colours, rgb } from 'leeks.js';
-import { ILoggerOptions } from './Interfaces';
 
-export default class Logger {
-	private namespace: string;
+import { IColours, ILoggerOptions } from './Interfaces';
+import { Utilities } from './Util';
 
-	public constructor(options: ILoggerOptions) {
-		this.namespace = this._toDotCase(options.namespace);
+export class Logger {
+	protected readonly _util: Utilities = new Utilities();
+	protected readonly _colours: IColours = {
+		info: [143, 188, 187],
+		debug: [161, 188, 138],
+		error: [191, 97, 106],
+		warn: [235, 203, 139],
+	};
+
+	public constructor(private _options: ILoggerOptions) {
+		this._options.namespace = this._util.toDotCase(this._options.namespace);
+
+		if (this._options.customColours) this._colours = { ...this._colours, ...this._options.customColours };
 	}
 
-	protected _toDotCase = (string: string): string => {
-		return string
-			.replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, '')
-			.replace(/([a-z])([A-Z])/g, (_, a, b) => `${a}_${b.toLowerCase()}`)
-			.replace(/[^A-Za-z0-9]+|_+/g, '.')
-			.toLowerCase();
-	};
-
-	protected write = (colour: [number, number, number], level: string, ...message: string[]): void => {
-		process.stdout.write(
-			`${colours.blackBright(new Date().toLocaleString())} ${rgb(colour, level.toUpperCase())} (${
-				this.namespace
-			}) ${rgb(colour, message.join(''))}\n`,
-		);
-	};
-
-	public setName = (newName: string): this => {
-		this.namespace = this._toDotCase(newName);
+	protected write = (colour: [number, number, number], level: string, ...message: string[]): this => {
+		process.stdout.write(`${colours.blackBright(new Date().toLocaleString())} ${rgb(colour, level.toUpperCase())} (${this._options.namespace}) ${rgb(colour, message.join(''))}\n`);
 		return this;
 	};
 
-	public info = (...message: string[]): this => {
-		this.write([143, 188, 187], 'info ', ...message);
-		return this;
-	};
+	public info = (...message: string[]): this => this.write(this._colours.info, 'info ', ...message);
+	public debug = (...message: string[]): this => this.write(this._colours.debug, 'debug', ...message);
+	public error = (...message: string[]): this => this.write(this._colours.error, 'error', ...message);
+	public warn = (...message: string[]): this => this.write(this._colours.warn, 'warn ', ...message);
 
-	public debug = (...message: string[]): this => {
-		this.write([161, 188, 138], 'debug', ...message);
-		return this;
-	};
-
-	public error = (...message: string[]): this => {
-		this.write([191, 97, 106], 'error', ...message);
-		return this;
-	};
-
-	public warn = (...message: string[]): this => {
-		this.write([235, 203, 139], 'warn ', ...message);
+	public setName = (name: string): this => {
+		this._options.namespace = this._util.toDotCase(name);
 		return this;
 	};
 }
