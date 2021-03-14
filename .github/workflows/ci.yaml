@@ -23,19 +23,3 @@ jobs:
               run: |
                   yarn run lint
                   yarn run format
-    test_node:
-        runs-on: ${{ matrix.os }}
-        needs: test_lint
-        strategy:
-            matrix:
-                node: ['14', '13', '12']
-                os: [windows-latest, ubuntu-latest]
-        name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node }}
-            - run: npm install -g yarn
-            - run: yarn
-            - run: yarn run test
