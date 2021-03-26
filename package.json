@@ -1,6 +1,6 @@
 {
 	"name": "@sach1/hydrangea",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "build/index.js",
 	"author": "sach1",
 	"license": "MIT",
