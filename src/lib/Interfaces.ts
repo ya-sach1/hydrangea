@@ -8,6 +8,7 @@ interface IColours {
 	debug: [number, number, number];
 	error: [number, number, number];
 	warn: [number, number, number];
+	foreground: [number, number, number];
 }
 
 export { ILoggerOptions, IColours };

@@ -16,9 +16,6 @@
 		"format:fix": "yarn run --silent format -w --loglevel silent && echo -e '\\033[32mFormatted.'",
 		"documentation": "typedoc"
 	},
-	"dependencies": {
-		"leeks.js": "^0.0.9"
-	},
 	"devDependencies": {
 		"@types/node": "^14.14.22",
 		"@typescript-eslint/eslint-plugin": "^4.11.0",
