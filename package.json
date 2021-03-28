@@ -4,6 +4,10 @@
 	"main": "build/index.js",
 	"author": "sach1",
 	"license": "MIT",
+	"files": [
+		"build",
+		"!build/*.tsbuildinfo"
+	],
 	"private": false,
 	"types": "build/index.d.ts",
 	"scripts": {

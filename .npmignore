@@ -8,3 +8,5 @@ documentation
 .prettierrc.yaml
 typedoc.json
 src
+test.js
+*.tsbuildinfo
