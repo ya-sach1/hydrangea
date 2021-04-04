@@ -1,14 +1,17 @@
+import { RGBColour } from './Types';
+
 interface ILoggerOptions {
 	namespace: string;
 	customColours?: Partial<IColours>;
+	format?: string;
 }
 
 interface IColours {
-	info: [number, number, number];
-	debug: [number, number, number];
-	error: [number, number, number];
-	warn: [number, number, number];
-	foreground: [number, number, number];
+	info: RGBColour;
+	debug: RGBColour;
+	error: RGBColour;
+	warn: RGBColour;
+	foreground: RGBColour;
 }
 
 export { ILoggerOptions, IColours };
